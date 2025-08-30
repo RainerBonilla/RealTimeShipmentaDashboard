@@ -25,6 +25,7 @@ const useGetShipments = () => {
       } catch (error) {
         console.error('error: ', error);
         setShipsError(true);
+        setShipsLoading(false);
       }
     };
     fetchShipments();
