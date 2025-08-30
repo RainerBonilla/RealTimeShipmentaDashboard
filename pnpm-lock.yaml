@@ -14,25 +14,12 @@ importers:
       turbo:
         specifier: ^2.5.6
         version: 2.5.6
-        specifier: ^2.5.6
-        version: 2.5.6
       typescript:
         specifier: 5.9.2
         version: 5.9.2
 
   apps/api:
-  apps/api:
     dependencies:
-      '@nestjs/common':
-        specifier: ^11.0.1
-        version: 11.1.6(reflect-metadata@0.2.2)(rxjs@7.8.2)
-      '@nestjs/core':
-        specifier: ^11.0.1
-        version: 11.1.6(@nestjs/common@11.1.6(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/platform-express@11.1.6)(reflect-metadata@0.2.2)(rxjs@7.8.2)
-      '@nestjs/platform-express':
-        specifier: ^11.0.1
-        version: 11.1.6(@nestjs/common@11.1.6(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.1.6)
-      '@repo/supabase':
       '@nestjs/common':
         specifier: ^11.0.1
         version: 11.1.6(reflect-metadata@0.2.2)(rxjs@7.8.2)
