@@ -1,0 +1,22 @@
+{
+  "name": "@repo/types",
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch"
+  },
+  "exports": {
+    "./shipment": {
+      "types": "./src/shipment.ts",
+      "default": "./dist/shipment.js"
+    }
+  },
+  "dependencies": {
+    "zod": "^4.1.5"
+  },
+  "devDependencies": {
+    "@repo/typescript-config": "workspace:*",
+    "typescript": "latest"
+  }
+}
