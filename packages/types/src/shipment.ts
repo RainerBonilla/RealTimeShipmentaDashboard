@@ -1,11 +1,20 @@
-import { z } from "zod";
+import { z } from 'zod';
 
 export const ShipmentSchema = z.object({
-    id: z.number(),
-    created_at: z.coerce.date(),
-    description: z.string(),
-    size: z.number(),
-    delivered: z.boolean()
+  id: z.uuid(),
+  created_at: z.iso.datetime({
+    offset: true,
+  }),
+  description: z.string(),
+  size: z.number(),
+  delivered: z.boolean(),
 });
 
 export type Shipment = z.infer<typeof ShipmentSchema>;
+
+export const CreateShipmentSchema = z.object({
+  description: z.string(),
+  size: z.number(),
+});
+
+export type CreateShipment = z.infer<typeof CreateShipmentSchema>;
