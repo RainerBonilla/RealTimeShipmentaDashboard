@@ -4,7 +4,9 @@ export declare enum Status {
     PENDING = 1,
     IN_TRANSIT = 2,
     CANCELED = 3,
-    DELIVERED = 4
+    DELIVERED = 4,
+    ON_TIME = 5,
+    DELAYED = 6
 }
 export declare const StatusSchema: z.ZodEnum<typeof Status>;
 export declare const ShipmentStatusSchema: z.ZodObject<{

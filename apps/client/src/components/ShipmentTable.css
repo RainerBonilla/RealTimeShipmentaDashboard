@@ -1,0 +1,55 @@
+.ed-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin: 5px;
+}
+
+.container {
+  padding: 2rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.statusCell {
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-weight: bold;
+  color: #fff;
+  font-size: 0.75rem;
+  text-align: center as const;
+  white-space: nowrap;
+}
+
+.CREATED {
+  background-color: rgb(107, 107, 107);
+}
+
+.PENDING {
+  background-color: rgb(233, 196, 47);
+}
+
+.IN_TRANSIT {
+  background-color: rgb(89, 139, 255);
+}
+
+.CANCELED {
+  background-color: rgb(244, 73, 73);
+}
+
+.DELIVERED {
+  background-color: rgb(110, 202, 148);
+}
+
+.ON_TIME {
+  background-color: rgb(86, 149, 164);
+}
+
+.DELAYED {
+  background-color: rgb(226, 150, 96);
+}
+
+.loading {
+  opacity: 0.5;
+}
