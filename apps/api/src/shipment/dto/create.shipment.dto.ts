@@ -6,5 +6,14 @@ export class CreateShipmentDto {
   readonly description: string;
 
   @IsNumber()
+  @IsNotEmpty()
   readonly size: number;
+
+  @IsString()
+  @IsNotEmpty()
+  readonly origin: string;
+
+  @IsString()
+  @IsNotEmpty()
+  readonly destination: string;
 }

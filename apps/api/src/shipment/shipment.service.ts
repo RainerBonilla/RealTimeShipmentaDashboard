@@ -14,7 +14,9 @@ export class ShipmentService {
 
   async getMany(): Promise<Shipment[]> {
     try {
-      const { data, error } = await this.supabase.from('shipments').select('*');
+      const { data, error } = await this.supabase
+        .from('shipments')
+        .select('*, status:shipment_statuses(*)');
 
       if (error) {
         console.error('Error fetching shipments:', error);
@@ -45,7 +47,10 @@ export class ShipmentService {
     try {
       const { data, error } = await this.supabase
         .from('shipments')
-        .insert(shipmentPayload)
+        .insert({
+          ...shipmentPayload,
+          status: 0,
+        })
         .select();
       if (error) {
         console.error('Error creating shipment:', error);
@@ -69,7 +74,7 @@ export class ShipmentService {
     try {
       const { data, error } = await this.supabase
         .from('shipments')
-        .select()
+        .select('*, status:shipment_statuses(*)')
         .eq('id', id);
 
       if (error) {
@@ -96,7 +101,7 @@ export class ShipmentService {
     try {
       const { error } = await this.supabase
         .from('shipments')
-        .update({ delivered: true })
+        .update({ delivered: true, status: 4 })
         .eq('id', id);
 
       if (error) {

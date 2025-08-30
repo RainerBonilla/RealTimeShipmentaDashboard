@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Param, Post } from '@nestjs/common';
+import { Body, Controller, Get, Param, Patch, Post } from '@nestjs/common';
 import { ShipmentService } from './shipment.service';
 import { CreateShipmentDto } from './dto/create.shipment.dto';
 
@@ -21,7 +21,7 @@ export class ShipmentController {
     return await this.shipmentService.findById(id);
   }
 
-  @Post(':id')
+  @Patch(':id')
   async markAsDelivered(@Param('id') id: string) {
     return await this.shipmentService.markAsDelivered(id);
   }
