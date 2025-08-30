@@ -123,6 +123,9 @@ importers:
 
   apps/client:
     dependencies:
+      '@repo/types':
+        specifier: workspace:*
+        version: link:../../packages/types
       react:
         specifier: ^19.1.1
         version: 19.1.1
@@ -134,7 +137,7 @@ importers:
         specifier: ^9.33.0
         version: 9.34.0
       '@types/react':
-        specifier: ^19.1.10
+        specifier: ^19.1.12
         version: 19.1.12
       '@types/react-dom':
         specifier: ^19.1.7

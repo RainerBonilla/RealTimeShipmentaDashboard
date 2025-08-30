@@ -6,6 +6,8 @@ export enum Status {
   IN_TRANSIT = 2,
   CANCELED = 3,
   DELIVERED = 4,
+  ON_TIME = 5,
+  DELAYED = 6,
 }
 
 export const StatusSchema = z.enum(Status);
