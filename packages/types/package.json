@@ -10,6 +10,10 @@
     "./shipment": {
       "types": "./src/shipment.ts",
       "default": "./dist/shipment.js"
+    },
+    "./shipment-status": {
+      "types": "./src/shipmentStatus.ts",
+      "default": "./dist/shipmentStatus.js"
     }
   },
   "dependencies": {
