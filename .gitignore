@@ -23,4 +23,20 @@ lerna-debug.log*
 .temp
 .tmp
 
+# Turborepo
 .turbo/
+dist/
+node_modules/
+.env
+.env.*
+pnpm-lock.yaml
+
+# IDEs
+.idea/
+.vscode/
+*.iml
+.DS_Store
+
+# OS generated files
+.Trash/
+Thumbs.db
