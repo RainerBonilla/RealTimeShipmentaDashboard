@@ -28,7 +28,6 @@ lerna-debug.log*
 dist/
 node_modules/
 .env
-.env.*
 pnpm-lock.yaml
 
 # IDEs
