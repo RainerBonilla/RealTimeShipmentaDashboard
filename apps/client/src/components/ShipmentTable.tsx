@@ -4,6 +4,8 @@ import Table from './Table';
 import { useShipmentList } from '../context/ShipmentListContext';
 import ErrorCard from './ErrorCard';
 import { Status } from '@repo/types/shipment-status';
+import useUpdateShipment from '../utils/backend-hooks/useUpdateShipment';
+import MarkAsDeliveredButton from './MarkAsDeliveredButton';
 
 const shipmentColumns = [
   { key: 'description' as keyof Shipment, header: 'Description' },
@@ -22,16 +24,42 @@ const shipmentColumns = [
 ];
 
 const ShipmentTable = () => {
-  const { shipsLoading, shipsError, shipments } = useShipmentList();
+  const { shipsLoading, shipsError, shipments, updateShipmentInList } =
+    useShipmentList();
+  const { updateLoading, updateError, updateShipment } = useUpdateShipment();
 
   // create a mark as delivered button
+  const HandleMarkAsDelivered = async (shipment: Shipment) => {
+    const updatedShipment = await updateShipment(shipment.id);
+    if (updatedShipment) {
+      updateShipmentInList(updatedShipment);
+    }
+  };
 
-  const showList = shipments && !shipsError;
+  const addDeliveredColum = () => {
+    return [
+      ...shipmentColumns,
+      {
+        key: 'mark' as keyof Shipment,
+        header: 'Mark as Delivered',
+        render: (item: Shipment) => (
+          <MarkAsDeliveredButton
+            shipment={item}
+            onClick={HandleMarkAsDelivered}
+          ></MarkAsDeliveredButton>
+        ),
+      },
+    ];
+  };
+
+  const loading = shipsLoading || updateLoading;
+  const isError = shipsError || updateError;
+  const showList = shipments && !isError;
   return (
-    <div className={`ed-container ${shipsLoading ? 'loading' : ''}`}>
+    <div className={`ed-container ${loading ? 'loading' : ''}`}>
       {showList ? (
         <div className='container'>
-          <Table data={shipments} columns={shipmentColumns} />
+          <Table data={shipments} columns={addDeliveredColum()} />
         </div>
       ) : (
         <ErrorCard errorMessage='Something happened while getting the list of employees.' />

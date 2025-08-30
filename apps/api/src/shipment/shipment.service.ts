@@ -99,14 +99,19 @@ export class ShipmentService {
 
   async markAsDelivered(id: string): Promise<boolean> {
     try {
-      const { error } = await this.supabase
+      const { data, error } = await this.supabase
         .from('shipments')
         .update({ delivered: true, status: 4 })
-        .eq('id', id);
+        .eq('id', id)
+        .select('*, status:shipment_statuses(*)');
 
       if (error) {
         console.error('Error updating shipment:', error);
         return false;
+      }
+
+      if (data) {
+        return data[0];
       }
 
       return true;
